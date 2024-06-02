@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Layout</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Website Ban Hang</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page"
+                       href="/categories">Category</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page"
+                       href="/product/index">Product</a>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container mt-4">
+    <section layout:fragment="content">
+        <!-- Content will be replaced by each specific page -->
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form>
+                    <div class="mb-3">
+                        <label for="ten" class="form-label">Tên</label>
+                        <input type="text" class="form-control" id="ten" name="ten">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tuoi" class="form-label">Tuổi</label>
+                        <input type="number" class="form-control" id="tuoi" name="tuoi">
+                    </div>
+                    <div class="mb-3">
+                        <label for="khoa" class="form-label">Khoa</label>
+                        <input type="text" class="form-control" id="khoa" name="khoa">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+</script>
+</body>
+</html>
