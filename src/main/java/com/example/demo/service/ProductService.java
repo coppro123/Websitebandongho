@@ -50,6 +50,11 @@ public class ProductService {
         productRepository.save(product);
     }
 
+    public Product addProduct(Product product) {
+        return productRepository.save(product);
+    }
+
+
     /**
      * Update an existing product.
      * @param product the product with updated information
@@ -100,11 +105,11 @@ public class ProductService {
 
             if (Files.exists(filePath)) {
                 // File already exists, reuse the existing file's URL
-                product.setImgUrl("/images/" + fileName);
+                product.setMainImgUrl("/images/" + fileName);
             } else {
                 // Save the new file
                 Files.copy(file.getInputStream(), filePath);
-                product.setImgUrl("/images/" + fileName);
+                product.setMainImgUrl("/images/" + fileName);
             }
         }
     }

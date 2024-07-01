@@ -13,7 +13,15 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String customerName;
+
+    private String customerAddress;
+
+    private String phoneNumber;
+    private String customerEmail;
+    private String note;
+
     @OneToMany(mappedBy = "order")
     private List<OrderDetail> orderDetails;
 }

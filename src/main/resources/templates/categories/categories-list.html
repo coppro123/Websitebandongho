@@ -11,8 +11,7 @@
 <section layout:fragment="content">
     <h1>Categories List</h1>
     <div>
-        <a th:href="@{/categories/add}" class="btn btn-primary mb-3">Add New
-            Category</a>
+        <a th:href="@{/categories/add}" class="btn btn-primary mb-3">Add New Category</a>
     </div>
     <table class="table table-bordered table-hover">
         <thead class="table-dark">
@@ -27,8 +26,7 @@
             <td th:text="${category.id}"></td>
             <td th:text="${category.name}"></td>
             <td>
-                <a th:href="@{/categories/edit/{id}(id=${category.id})}" class="btn
-btn-success btn-sm">Edit</a>
+                <a th:href="@{/categories/edit/{id}(id=${category.id})}" class="btn btn-success btn-sm">Edit</a>
                 <a th:href="@{/categories/delete/{id}(id=${category.id})}"
                    class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
             </td>
