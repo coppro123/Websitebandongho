@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.model.CartItem;
 import com.example.demo.model.Order;
 import com.example.demo.model.OrderDetail;
+import com.example.demo.model.Product;
 import com.example.demo.repository.OrderDetailRepository;
 import com.example.demo.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
@@ -47,4 +48,10 @@ public class OrderService {
         cartService.clearCart();
         return order;
     }
+
+    public List<Order> getAllOrders() {
+        return orderRepository.findAll();
+    }
+
+    public List<OrderDetail> getAllOrderDetails() {return orderDetailRepository.findAll();}
 }

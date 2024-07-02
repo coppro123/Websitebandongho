@@ -1488,7 +1488,7 @@
                                 </li>
 
                                 <li >
-                                    <a th:href="@{/admin/order}" th:classappend="${currentPage == 'order'} ? 'mm-active' : ''">
+                                    <a th:href="@{/order/index}" th:classappend="${currentPage == 'order'} ? 'mm-active' : ''">
                                         <i class="metismenu-icon"></i>Order
                                     </a>
                                 </li>
@@ -1522,9 +1522,12 @@
         <div class="app-main__outer">
 
             <!-- Main -->
-            <div layout:fragment="content">
+            <div class="main__inner">
+                <div layout:fragment="content">
 
+                </div>
             </div>
+
             <!-- End Main -->
 
             <div class="app-wrapper-footer">

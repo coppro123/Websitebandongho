@@ -18,6 +18,13 @@ import java.util.List;
 @Controller
 @RequestMapping("/order")
 public class OrderController {
+
+    private final OrderService _orderService;
+
+    public OrderController(OrderService orderService) {
+        _orderService = orderService;
+    }
+
     @Autowired
     private OrderService orderService;
     @Autowired
@@ -27,6 +34,14 @@ public class OrderController {
         return "/cart/checkout";
     }
 
+
+    @GetMapping("/index")
+    public String order(Model model) {
+
+        List<Order> listOrder = _orderService.getAllOrders();
+        model.addAttribute("listOrder", listOrder);
+        return "admin/order/order-list";
+    }
 
     @PostMapping("/submit")
     public String submitOrder(String customerName,

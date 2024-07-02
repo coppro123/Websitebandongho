@@ -90,7 +90,7 @@ public class ProductController {
             e.printStackTrace();
             // Handle file upload error
         }
-        return "redirect:/product/index";
+        return "redirect:/admin/product";
     }
 
 
@@ -154,7 +154,7 @@ public class ProductController {
             e.printStackTrace();
             // Handle file upload error
         }
-        return "redirect:/product/index";
+        return "redirect:/admin/product";
     }
 
     // Delete a product

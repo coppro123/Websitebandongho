@@ -1,9 +1,9 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Category;
-import com.example.demo.model.Product;
+import com.example.demo.model.*;
 import com.example.demo.service.CategoryService;
 import com.example.demo.service.ImageService;
+import com.example.demo.service.OrderService;
 import com.example.demo.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin")
@@ -24,18 +26,25 @@ public class AdminController {
     private final ProductService _productService;
     private final CategoryService _categoryService;
     private final ImageService _imageService;
+    private final OrderService _orderService;
     private static final String UPLOAD_DIR = "uploads/images/";
 
-    public AdminController(ProductService productService, CategoryService categoryService, ImageService imageService) {
+    public AdminController(ProductService productService,
+                           CategoryService categoryService, ImageService imageService,
+                           OrderService orderService) {
         _productService = productService;
         _categoryService = categoryService;
         _imageService = imageService;
+        _orderService = orderService;
     }
 
     @GetMapping("/index")
     public String showAdminPage(Model model) {
+        List<OrderDetail> lstOrderDetail = _orderService.getAllOrderDetails();
+
+        model.addAttribute("lstOrderDetail", lstOrderDetail);
         model.addAttribute("currentPage", "dashboard");
-        return "admin/index";
+        return "admin/dashboard/index";
     }
     // nguyen minh chau 12345464745564654
 
@@ -51,15 +60,35 @@ public class AdminController {
         return "admin/order";
     }
 
+    // =========================================================PRODUCT======================
+
     @GetMapping("/product")
     public String product(Model model) {
         model.addAttribute("currentPage", "product");
         List<Product> pdl = _productService.getAllProducts();
         model.addAttribute("products", pdl);
-        return "admin/product/product_-list";
+        return "admin/product/product-list";
+    }
+
+    @GetMapping("/detail/{id}")
+    public String showDetailProduct(@PathVariable("id") Long id, Model model) {
+        Optional<Product> productOptional = _productService.getProductById(id);
+
+        if (productOptional.isPresent()) {
+            Product product = productOptional.get();
+            List<Image> images = _imageService.showListImageByProductId(product.getId());
+            model.addAttribute("images", images);
+            model.addAttribute("product", product);
+            return "/admin/product/detail";
+        } else {
+            // Handle the case where the product with the given ID is not found
+            return "error/productNotFound";
+        }
     }
 
 
+
+    // =========================================================CATEGORY======================
     @GetMapping("/category")
     public String category(Model model) {
         model.addAttribute("currentPage", "category");
@@ -119,6 +148,7 @@ public class AdminController {
         return "redirect:/admin/category/index";
     }
 
+    // =========================================================Brand======================
     @GetMapping("/brand")
     public String brand(Model model) {
         model.addAttribute("currentPage", "brand");
