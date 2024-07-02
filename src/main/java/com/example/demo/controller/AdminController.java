@@ -94,7 +94,7 @@ public class AdminController {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid category Id:"
                         + id));
         model.addAttribute("category", category);
-        return "/admin/category/category-list";
+        return "/admin/category/update-category";
     }
     // POST request to update category
     @PostMapping("/category/update/{id}")
@@ -102,7 +102,7 @@ public class AdminController {
                                  BindingResult result, Model model) {
         if (result.hasErrors()) {
             category.setId(id);
-            return "/admin/category/index";
+            return "/admin/category/update-category";
         }
         _categoryService.updateCategory(category);
         model.addAttribute("categories", _categoryService.getAllCategories());
