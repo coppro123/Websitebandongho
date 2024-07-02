@@ -42,6 +42,8 @@ public class CategoryController {
         return "/categories/categories-list";
     }
 
+
+
     // GET request to show category edit form
     @GetMapping("/edit/{id}")
     public String showUpdateForm(@PathVariable("id") Long id, Model model) {

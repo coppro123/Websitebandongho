@@ -47,9 +47,10 @@
                         </form>
 
                         <div class="btn-actions-pane-right">
-                            <div role="group" class="btn-group-sm btn-group">
-                                <button class="btn btn-focus">This week</button>
-                                <button class="active btn btn-focus">Anytime</button>
+                            <div class="btn-group ml-3">
+                                <button class="btn btn-success">
+                                    <i class="fa fa-plus-circle"></i>&nbsp; Add
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -68,6 +69,7 @@
                             <tbody>
 
                             <tr th:each="item : ${products}">
+
                                 <td th:text="${item.id}" class="text-center text-muted"></td>
 
                                 <td>
@@ -105,6 +107,7 @@
                                         Details
                                     </a>
                                 </td>
+
                             </tr>
 
 
