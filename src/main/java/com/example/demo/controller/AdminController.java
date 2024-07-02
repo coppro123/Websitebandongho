@@ -24,7 +24,7 @@ public class AdminController {
         model.addAttribute("currentPage", "dashboard");
         return "admin/index";
     }
-    // nguyen minh chau 12345464745564
+    // nguyen minh chau 12345464745564654
 
     @GetMapping("/user")
     public String user(Model model) {
